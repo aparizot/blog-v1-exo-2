@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Blog Exo 1 {% endblock %}
+
+{% block body %}
+
+    <h1> Welcome to my world, {{ app.user.username|capitalize }} </h1>
+
+<ul>
+    {% for category in categories %}
+        <li> <a href="{{ path('category_display', {'id': category.id}) }}"> {{ category.title }} </a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ article.title }} {% endblock %}
+
+{% block body %}
+
+<h1> {{ article.title }} - <i> par {{ article.author.username|capitalize }} </i> </h1>
+
+<p> {{ article.content }} </p>
+
+{% if is_granted('ROLE_ADMIN') %}
+
+
+
+{% endif %}
+
+<a href="{{ path('category_display', {'id': article.category.id}) }}"> {{ article.category.title }} </a>
+
+<p>__________________________________________________</p>
+<p> C'est l'espace des commentaire </p>
+
+{{ form(formComment) }}
+
+<p>_________________________________________________</p>
+
+{% for comment in article.comments %}
+    {% if comment.state == true %}
+
+    <p> <b> {{ comment.author.username }} a dit : </b> {{ comment.content }}</p>
+
+    {% endif %}
+{% endfor %}
+
+{% endblock %}

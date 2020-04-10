@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ category.title }} {% endblock %}
+
+{% block body %}
+
+<h1> {{ category.title }} </h1>
+
+<ul>
+{% for article in category.articles %}
+    <li> <a href="{{ path('article_reading', {'id': article.id}) }}"> {{ article.title }} </a></li>
+{% endfor %}
+</ul>
+{% endblock %}
